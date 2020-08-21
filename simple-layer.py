@@ -1,19 +1,16 @@
 import random
 
 inputs = [1, 2, 3, 4, 5, 6]
-# weights = [3.1, 2.1, 8.7]
+weights = [i for i, x in enumerate(inputs)]
 
-
-def neuron(inputs):
+def neuron(inputs, weights):
   bias = round(random.random()*100)/10
-  weighted_list = list(map(lambda x: x*3 , inputs))
-  sum_weighted = sum(weighted_list)
+  weigthed_list = list(inputs[i] * weights[i] for i, x in enumerate(inputs))
+  return sum(weigthed_list) + bias
 
-  return sum_weighted + bias
 
-outputs = [];
-
+outputs = []
 for i in range(0, 2):
-  outputs.append(neuron(inputs))
+  outputs.append(neuron(inputs, weights))
 
 print(outputs)
