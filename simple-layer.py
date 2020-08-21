@@ -1,7 +1,8 @@
 import random
 
 inputs = [1, 2, 3, 4, 5, 6]
-weights = [i for i, x in enumerate(inputs)]
+# weights = [i for i, x in enumerate(inputs)]
+weights = [1,2,3,4,5,6]
 
 def neuron(inputs, weights):
   bias = round(random.random()*100)/10
