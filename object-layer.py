@@ -1,4 +1,5 @@
 import random
+import json
 
 class Network:
   def __init__(self, inputs, weights_list, biases_list):
@@ -37,33 +38,20 @@ class Network:
       print(i+1,": ",layer)
 
 
+def read_setup():
+  return json.loads(open("assets/setup.json", "r").read())
+
+
+def write_setup():
+  with open("assets/setup.json", "w") as file:
+    json.dump(setup, file)
+
+
 def main():
-  # inputs = [1,2,3,4,5,6]
-
-  # weights_list = [
-  #   [[1,2,3,4,5,10], [1,2,3,4,25,6], [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6]],
-  #   [[1,45,1,2,3], [1,2,1,2,3], [1,2,1,2,3], [1,2,1,2,3], [1,2,1,2,3]],
-  #   [[1,2,1,2,3], [1,2,1,2,3], [1,2,1,2,3], [1,2,1,2,3], [1,2,1,2,3]],
-  #   [[1,2,1,2,3], [1,2,1,2,3], [1,2,1,2,3], [1,2,1,2,3], [1,2,1,2,3]]
-  # ]
-
-  # biases_list = [
-  #   [1,2,3,4,5],
-  #   [1.33,2.5,1.96,2,3],
-  #   [1,2,4,2,3],
-  #   [1,2]
-  # ]
-
-  # network = Network(inputs, weights_list, biases_list)
-
-  # network.show_network()
-
-  file1 = open('assets/network-startup.txt', 'r')
-
-  print(file1)
-
-
-
+  setup = read_setup()
+  network = Network(setup['inputs'], setup['weights_list'], setup['biases_list'])
+  network.show_network()
+  
 
 
 main()
