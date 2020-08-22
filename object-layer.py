@@ -1,7 +1,7 @@
 import random
 import json
 
-class Network:
+class NeuralNetwork:
   def __init__(self, inputs, weights_list, biases_list):
     self.inputs = inputs
     self.weights_list = weights_list
@@ -49,7 +49,7 @@ def write_setup():
 
 def __main__():
   setup = read_setup()
-  network = Network(setup['inputs'], setup['weights_list'], setup['biases_list'])
+  network = NeuralNetwork(setup['inputs'], setup['weights_list'], setup['biases_list'])
   network.show_network()
   
 
