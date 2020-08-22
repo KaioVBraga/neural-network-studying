@@ -1,12 +1,13 @@
 import random
 import json
+import numpy as np
 
 class NeuralNetwork:
-  def __init__(self, inputs, weights_list, biases_list):
-    self.inputs = inputs
-    self.weights_list = weights_list
-    self.biases_list = biases_list
-    self.layers = self.create_layers(inputs, weights_list, biases_list)
+  def __init__(self, setup):
+    self.inputs = setup["inputs"]
+    self.weights_list = setup["weights_list"]
+    self.biases_list = setup["biases_list"]
+    self.layers = self.create_layers(self.inputs, self.weights_list, self.biases_list)
 
   def neuron(self, inputs, weights, bias):
     weigthed_list = list(inputs[i] * weights[i] for i, x in enumerate(inputs))
@@ -49,7 +50,7 @@ def write_setup():
 
 def __main__():
   setup = read_setup()
-  network = NeuralNetwork(setup['inputs'], setup['weights_list'], setup['biases_list'])
+  network = NeuralNetwork(setup)
   network.show_network()
   
 
