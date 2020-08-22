@@ -47,11 +47,11 @@ def write_setup():
     json.dump(setup, file)
 
 
-def main():
+def __main__():
   setup = read_setup()
   network = Network(setup['inputs'], setup['weights_list'], setup['biases_list'])
   network.show_network()
   
 
 
-main()
+__main__()
